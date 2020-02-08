@@ -1,0 +1,23 @@
+@SpringBootApplication
+
+-- model
+@Entity
+@Id
+@Column
+@OneToMany
+@ManyToMany
+
+-- repository
+@Repository
+@Query
+
+-- service
+@Service
+
+-- controler
+@RestController
+@RequestMapping("/api/xxx")
+@GetMapping()
+@PostMapping
+@DeleteMapping
+
