@@ -1,5 +1,6 @@
 instal node.js
 npm config set proxy "http://a178423:<mdp>@138.21.88.176:3128"
+npm install -g npm
 npm install -g @angular/cli
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ng new my-app
@@ -9,6 +10,8 @@ npm install @ngx-translate/core @ngx-translate/http-loader rxjs --save
 ng serve --open
 ng generate component xyz
 ng generate service xyz 
+> rebuild from git source
+npm install --save-dev @angular-devkit/build-angular
 
 # netbeans (Bof)
 https://github.com/Chris2011/NBAngularCLI/releases
