@@ -1,0 +1,17 @@
+# Install Jekyll
+gem install bundler jekyll
+
+# Creation d'un site Jekyll
+jekyll new my-awesome-site
+
+# Lancement 
+cd my-awesome-site
+bundle install
+bundle info --path xxxx
+bundle exec jekyll serve -o
+
+# Trouver les Templates du theme
+bundle info --path alembic
+
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/minima-2.5.1
+Copy & Paste su root projet

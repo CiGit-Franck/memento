@@ -20,7 +20,7 @@ git push origin master
 
 # travailler sur une branche
 git branch
-git checkout -b US-01-001
+git checkout -b US-01-001/US-02-001
 
 # committer une branch
 git add .
