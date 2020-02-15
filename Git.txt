@@ -27,8 +27,11 @@ git checkout -b US-01-001/US-02-001
 
 # committer une branch
 git add .
-git commit -m "[US-01-001] create"
+git commit -m "[US-01-001] repo"
 git push -u origin US-01-001
 
 # changer de branche
 git checkout ma-branche
+
+# remiser les modifs locale
+git reset --hard HEAD
