@@ -10,6 +10,9 @@ git push -u origin master
 git remote add origin https://github.com/CiGit-Franck/memento.git
 git push -u origin master
 
+---
+https://fr.wikibooks.org/wiki/Git/Premiers_pas
+---
 
 # màj repository
 git reset origin/master
@@ -27,3 +30,5 @@ git add .
 git commit -m "[US-01-001] create"
 git push -u origin US-01-001
 
+# changer de branche
+git checkout ma-branche
