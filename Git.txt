@@ -14,6 +14,10 @@ git push -u origin master
 https://fr.wikibooks.org/wiki/Git/Premiers_pas
 ---
 
+# config
+git config --global user.email "franck.thery@gmail.com"
+git config --global user.name "CiGit-Franck"
+
 # màj repository
 git reset origin/master
 git pull --rebase
@@ -35,3 +39,4 @@ git checkout ma-branche
 
 # remiser les modifs locale
 git reset --hard HEAD
+
