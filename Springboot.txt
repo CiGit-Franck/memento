@@ -21,3 +21,6 @@
 @PostMapping
 @DeleteMapping
 
+-- find & kill process
+netstat -ano|findstr "PID :8080"
+taskkill /pid 1576 /f
