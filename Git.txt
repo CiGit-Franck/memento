@@ -27,7 +27,7 @@ git push origin master
 
 # travailler sur une branche
 git branch
-git checkout -b US-01-001/US-02-001
+git checkout -b US-01-001/US-02-001/US-04-001/US-02-002
 
 # committer une branch
 git add .
@@ -40,5 +40,5 @@ git checkout ma-branche
 # remiser les modifs locale
 git reset --hard HEAD
 
-delete commit file
+# delete commit file
 git reset filepath
