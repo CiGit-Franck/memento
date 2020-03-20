@@ -15,9 +15,13 @@
 @Service
 
 -- controler
+@Autowired
 @RestController
 @RequestMapping("/api/xxx")
 @GetMapping()
 @PostMapping
 @DeleteMapping
 
+SpringBoot >> killer un process
+netstat -ano | find "8090"
+taskkill /F /PID xxxx
