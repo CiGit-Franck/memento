@@ -10,6 +10,7 @@ npm install @ngx-translate/core @ngx-translate/http-loader rxjs --save
 ng serve --open
 ng generate component xyz
 ng generate service xyz 
+
 > rebuild from git source
 npm install --save-dev @angular-devkit/build-angular
 

@@ -19,7 +19,7 @@ git config --global user.email "franck.thery@gmail.com"
 git config --global user.name "CiGit-Franck"
 
 # màj repository
-git reset origin/master
+git reset origin/master --hard
 git pull --rebase
 git add .
 git commit -m "daily commit"
@@ -27,7 +27,11 @@ git push origin master
 
 # travailler sur une branche
 git branch
+<<<<<<< HEAD
 git checkout -b US-01-001/US-02-001/US-00-002
+=======
+git checkout -b US-01-001/US-02-001/US-04-001/US-02-002
+>>>>>>> 8ca4cc3756a3cb33d09b5a40f9203bd0cfed7629
 
 # committer une branch
 git add .
@@ -40,3 +44,5 @@ git checkout ma-branche
 # remiser les modifs locale
 git reset --hard HEAD
 
+# delete commit file
+git reset filepath

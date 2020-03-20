@@ -15,3 +15,5 @@ bundle info --path alembic
 
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/minima-2.5.1
 Copy & Paste su root projet
+
+Container : https://app.netlify.com/teams/cigit-franck/sites
