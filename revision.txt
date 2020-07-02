@@ -1,0 +1,114 @@
+
+Go chef d’oeuvre
+Révisions
+Définissons les termes
+BDD
+
+    C’est quoi un ORM ? interfacce entre code ett la bd (hibernate)
+    C’est quoi une clé primaire ? id unique
+    C’est quoi une clé étrangère ? id qui fait lien avec id     primaire
+    C’est quoi une contrainte d’intégrité ? caractèristique  d'une table 
+
+Entraînement aux requêtes SQL :
+
+    Récupérer toutes les planètes : select * from plaanet;
+    Récupérer seulement les planètes ayant plus de 1.000.000 de population
+    Récupérer seulement les planètes ayant plus de 1.000.000 de population triées par population décroissante puis par ordre alphabétique croissant (sur le nom)
+    Compter le nombre de terrains par planète
+    Récupérer seulement les planète ayant plus de 3 terrains différents
+
+Web
+
+    C’est quoi une API REST ? archi qui expose une api au web
+    De quoi est composée une requête HTTP ? header, body
+    Si on développe une SPA, où s’exécute le code Angular ? poste client
+    Si on développe une API avec Spring boot, où s’exécute le code Spring Boot ? serveur
+    Si on développe en php, comment fonctionne l’application (où sont générées les pages, où s’exécute le php) ?
+
+Sécurité
+
+    Authentification vs Authorisation ?
+    C’est quoi un hash ?
+    Comment fonctionne JWT (pour ceux qui l’utilisent) ?
+    C’est quoi la faille XSS ?
+    C’est quoi une injection SQL ?
+    C’est quoi la faille CSRF ?
+    C’est quoi le CORS et pourquoi on en a besoin de développant une SPA ?
+
+Front
+
+    Comment rendre son site responsive ? Exercice Stackblitz
+
+Créneaux Code Review
+Mercredi 1 Juillet
+
+Aprem :
+
+    14h30 -> 15h00 : Franck L
+    15h00 -> 15h30 :
+    15h30 -> 16h00 :
+
+Jeudi 2 Juillet
+
+Aprem :
+
+    14h30 -> 15h00 :
+    15h00 -> 15h30 :
+    15h30 -> 16h00 :
+
+Vendredi 3 Juillet
+
+Aprem :
+
+    14h30 -> 15h00 :
+    15h00 -> 15h30 :
+    15h30 -> 16h00 :
+
+Groupes chef d’oeuvre
+
+Proposition : monter des groupes de 3 apprenant•e•s pour vous entraider sur les projets. Et faire une synchro par semaine pour présenter une fonctionnalité de votre projet.
+
+Objectifs :
+
+    Arriver à expliquer votre code au groupe
+    Avoir du soutien des autres apprenant•e•s
+
+Constitution des groupes
+
+Team PHP (vieille techno)
+
+    Carole
+    Yves
+
+Team J’la joue (chef d’oeuvre) perso
+
+    Vincent
+    Frédéric
+    Saya
+
+Team Mongols
+
+    Guillaume
+    Sylvain
+
+Team hAPIs Renault
+
+    Pierre
+    Franck T
+
+Team Projet Renault
+
+    Nicolas
+    Jean-Marc
+
+Team PiC & PoC BNP
+
+    Benoît
+    Andréa
+
+Team Projet BNP
+
+    Franck L
+    Philippe
+
+Select a repo

@@ -1,13 +1,13 @@
 # or create a new repository on the command line
-echo "# memento" >> README.md
+echo "# div-api" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin https://github.com/CiGit-Franck/memento.git
+git remote add origin https://github.com/CiGit-Franck/div-api.git
 git push -u origin master
 
 # or push an existing repository from the command line
-git remote add origin https://github.com/CiGit-Franck/memento.git
+git remote add origin https://github.com/CiGit-Franck/div-api.git
 git push -u origin master
 
 ---
