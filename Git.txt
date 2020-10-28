@@ -12,6 +12,7 @@ git push -u origin master
 
 ---
 https://fr.wikibooks.org/wiki/Git/Premiers_pas
+https://blog.nathanaelcherrier.com/fr/gitflow-la-methodologie-et-la-pratique/
 ---
 
 # config
@@ -24,6 +25,11 @@ git pull --rebase
 git add .
 git commit -m "daily commit"
 git push origin master
+
+git checkout -b auth-cnx
+git add .
+git commit -m "[arca-cnx] commit"
+git push --set-upstream origin arca-cnx
 
 # travailler sur une branche
 git branch
@@ -45,4 +51,20 @@ git checkout ma-branche
 git reset --hard HEAD
 
 # delete commit file
-git reset filepath
+git reset <file>
+
+# Je développe des fonctionnalités
+git checkout -b <evol> develop
+git checkout <evol>
+git merge <nom> --no-ff
+git branch -d <nom>
+
+# process develop
+checkout develop
+create branch evol-xxx
+checkout evol-xxx
+iter comit
+> merge into develop
+checkout develop
+merge evol-xxx
+

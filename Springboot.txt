@@ -6,7 +6,7 @@
 @Column
 @OneToMany
 @ManyToMany
-
+0
 -- repository
 @Repository
 @Query
@@ -28,6 +28,7 @@ netstat -ano | find "8090"
 taskkill /F /PID xxxx
 =======
 -- find & kill process
-netstat -ano|findstr "PID :8080"
-taskkill /pid 1576 /f
+ps -W | grep px
+netstat -ano|findstr "PID :8090"
+taskkill /pid 11548 /f
 >>>>>>> 8ca4cc3756a3cb33d09b5a40f9203bd0cfed7629
