@@ -1,0 +1,5 @@
+ mvn clean
+ -- explore pom.xml
+ mvn dependency:tree 
+ 
+ mvn install

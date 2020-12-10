@@ -6,7 +6,7 @@
 @Column
 @OneToMany
 @ManyToMany
-0
+
 -- repository
 @Repository
 @Query
