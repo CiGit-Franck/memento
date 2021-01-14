@@ -1,0 +1,7 @@
+ Basic into <html>
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+ Vue Devtools
+ https://github.com/vuejs/vue-devtools#vue-devtools
+ 
+ 
