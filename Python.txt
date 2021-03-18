@@ -1,0 +1,7 @@
+-- install module
+pip install <module>
+
+-- upgrade pip
+cd <python-install>\Scripts
+pip install --upgrade pip
+

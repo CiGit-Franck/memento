@@ -1,0 +1,3 @@
+./projet
+  Dockerfile			-- instructions de création de l'image Docker
+  docker-compose.yml	-- instructions de déploiement
