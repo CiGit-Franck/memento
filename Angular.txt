@@ -9,9 +9,7 @@ ng serve --open
 ng new stackmovie
 ng add @angular/material
 npm i -s @angular/flex-layout @angular/cdk
-ng update @angular/cli
-ng update @angular/core
-ng generate component xyz
+ng update @angular/cli @angular/core --allow-dirty --forceng generate component xyz
 ng generate service xyz 
 
 > rebuild from git source
