@@ -1,5 +1,9 @@
- mvn clean
- -- explore pom.xml
- mvn dependency:tree 
- 
- mvn install
+mvn clean
+-- explore pom.xml
+mvn dependency:tree 
+
+mvn install
+
+mvn -Dplugin=install help:describe
+
+mvn archetype:generate

@@ -11,6 +11,7 @@ git remote add origin https://github.com/CiGit-Franck/div-api.git
 git push -u origin master
 
 ---
+https://git-scm.com/docs
 https://fr.wikibooks.org/wiki/Git/Premiers_pas
 https://blog.nathanaelcherrier.com/fr/gitflow-la-methodologie-et-la-pratique/
 ---
@@ -53,12 +54,6 @@ git reset --hard HEAD
 # delete commit file
 git reset <file>
 
-# Je développe des fonctionnalités
-git checkout -b <evol> develop
-git checkout <evol>
-git merge <nom> --no-ff
-git branch -d <nom>
-
 # process develop
 checkout develop
 create branch evol-xxx
@@ -68,3 +63,51 @@ iter comit
 checkout develop
 merge evol-xxx
 
+# ================================
+# Mode Gitflow
+# ================================
+
+# Je développe une fonctionnalité
+# --------------------------------
+git checkout -b <evol> develop
+git checkout dev
+>fin deve
+git merge <nom> --no-ff
+>delete la branche
+git branch -d <nom>
+
+# Je met en prod une version
+# --------------------------------
+git checkout -b <version> develop
+git checkout dev
+git merge <version> --no-ff
+>re7 ok
+git checkout master
+git merge <version> --no-ff
+git tag <version>
+>delete la branche
+git branch -d <version>
+
+# Bug en prod
+# --------------------------------
+git checkout -b <name> master
+git checkout dev
+>fin correction
+git merge <name> --no-ff
+git checkout master
+git merge <name> --no-ff
+git tag <version>
+>delete la branche
+git branch -d <name>
+
+# --------------------------------
+# En automatique
+# --------------------------------
+git flow init
+git flow feature start <nom>
+git flow feature finish <nom>
+git flow release start <nom>
+git flow release finish <nom>
+git flow hotfix start <nom>
+git flow hotfix finish <nom>
+# ================================
