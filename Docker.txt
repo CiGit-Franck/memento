@@ -1,3 +1,24 @@
+https://www.wundertech.net/portainer-raspberry-pi-install-how-to-install-docker-and-portainer/
+# install Docker on rpi3b
+sudo apt-get install apt-transport-https ca-certificates software-properties-common -y
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
+sudo usermod -aG docker pi
+sudo curl https://download.docker.com/linux/raspbian/gpg
+sudo nano /etc/apt/sources.list
+	deb https://download.docker.com/linux/raspbian/ stretch stable
+sudo apt-get update
+sudo apt-get upgrade
+sudo systemctl start docker.service
+	sudo systemctl enable docker.service
+
+# install Portainer on rpi3b
+sudo docker pull portainer/portainer-ce:linux-arm
+sudo docker volume create portainer_data
+sudo docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:linux-arm
+sudo docker ps
+http://192.168.0.30:9000
+pi3docker/DockerInside
+
 ./projet
   Dockerfile			-- instructions de création de l'image Docker
   docker-compose.yml	-- instructions de déploiement
