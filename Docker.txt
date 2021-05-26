@@ -19,6 +19,8 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
+#
+
 ./projet
   Dockerfile			-- instructions de création de l'image Docker
   docker-compose.yml	-- instructions de déploiement
