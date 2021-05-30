@@ -1,0 +1,41 @@
+sudo raspi-config
+hostname > pi3
+ssh pi@pi3
+ssh pi@192.168.0.30
+
+-- reboot
+sudo shutdown -r now (or sudo reboot)
+-- shutdown
+sudo shutdown -h now (or sudo halt)
+
+-- upgrade
+sudo apt update
+sudo apt full-upgrade
+sudo apt-get clean 
+sudo apt autoremove
+
+-- Install Git
+
+-- install Docker on rpi3b
+sudo apt-get install apt-transport-https ca-certificates software-properties-common -y
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
+sudo usermod -aG docker pi
+sudo curl https://download.docker.com/linux/raspbian/gpg
+sudo nano /etc/apt/sources.list
+	deb https://download.docker.com/linux/raspbian/ stretch stable
+sudo apt-get update
+sudo apt-get upgrade
+sudo systemctl start docker.service
+	sudo systemctl enable docker.service
+
+-- install Portainer on rpi3b
+sudo docker pull portainer/portainer-ce:linux-arm
+sudo docker volume create portainer_data
+sudo docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:linux-arm
+sudo docker ps
+http://192.168.0.30:9000
+pi3docker/DockerInside
+
+-- install Mosquitto
+docker pull eclipse-mosquitto
+docker pull nodered/node-red
