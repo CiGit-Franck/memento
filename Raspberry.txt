@@ -3,6 +3,9 @@ hostname > pi3
 ssh pi@pi3
 ssh pi@192.168.0.30
 
+-- info version
+cat /etc/os-release
+
 -- reboot
 sudo shutdown -r now (or sudo reboot)
 -- shutdown
@@ -36,6 +39,7 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
--- install Mosquitto
+-- install Mosquitto & Node-Red
 docker pull eclipse-mosquitto
+
 docker pull nodered/node-red
