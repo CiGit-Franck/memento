@@ -39,7 +39,12 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
--- install Mosquitto & Node-Red
+-- install Mosquitto
 docker pull eclipse-mosquitto
 
+-- install image Node-Red
 docker pull nodered/node-red
+-- check not used port
+sudo netstat -pna | grep 1880
+-- create container
+docker run -it -p 1890:1890 -v node_red_data:/data --name nodered-trash nodered/node-red
