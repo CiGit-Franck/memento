@@ -39,6 +39,9 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
+docker network create iot
+50e4163a5a0c7464966413299d553dd51ada8cacddab21a29875df4ff357c2f3
+
 -- install Mosquitto
 docker pull eclipse-mosquitto
 
