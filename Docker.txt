@@ -19,7 +19,18 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
-#
+# list
+docker images
+docker ps
+docker ps -a
+
+# container
+docker start CONTAINER_ID
+docker attach CONTAINER_ID
+docker stop CONTAINER_ID
+docker rm CONTAINER_ID
+docker kill CONTAINER_ID
+docker exec CONTAINER_ID command
 
 ./projet
   Dockerfile			-- instructions de création de l'image Docker
