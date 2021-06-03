@@ -19,10 +19,16 @@ sudo docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 
-# list
-docker images
+# util
 docker ps
 docker ps -a
+docker system prune
+journalctl -u docker.service
+
+# image
+docker images
+docker rmi IMAGE_ID
+docker history IMAGE_ID
 
 # container
 docker start CONTAINER_ID
@@ -30,7 +36,18 @@ docker attach CONTAINER_ID
 docker stop CONTAINER_ID
 docker rm CONTAINER_ID
 docker kill CONTAINER_ID
+docker rename CONTAINER NEW_NAME
 docker exec CONTAINER_ID command
+
+# network
+docker network create NET
+docker network ls
+docker network connect NET CONTAINER_ID
+docker network disconnect NET CONTAINER_ID
+docker network inspect NET
+docker network rm NET
+docker network prune
+
 
 ./projet
   Dockerfile			-- instructions de création de l'image Docker
