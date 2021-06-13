@@ -51,3 +51,17 @@ docker pull nodered/node-red
 sudo netstat -pna | grep 1880
 -- create container
 docker run -it -p 1890:1890 -v node_red_data:/data --name nodered-trash nodered/node-red
+
+-- install image motionEye
+docker pull ccrisan/motioneye:master-armhf
+docker run --name="motioneye" \
+    -p 8765:8765 \
+    --hostname="motioneye" \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /etc/motioneye:/etc/motioneye \
+    -v /var/lib/motioneye:/var/lib/motioneye \
+    --restart="always" \
+    --detach=true \
+    ccrisan/motioneye:master-armhf
+
+> http://192.168.0.30:8765/
