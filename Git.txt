@@ -88,6 +88,11 @@ git tag <version>
 >delete la branche
 git branch -d <version>
 
+# Tag / Release version
+# --------------------------------
+git tag -a 0.1 -m "version content"
+git push origin 0.1
+
 # Bug en prod
 # --------------------------------
 git checkout -b <name> master
