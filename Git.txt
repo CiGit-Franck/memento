@@ -70,9 +70,13 @@ merge evol-xxx
 # Je développe une fonctionnalité
 # --------------------------------
 git checkout -b <evol> develop
-git checkout dev
+git checkout <evol>
 >fin deve
-git merge <nom> --no-ff
+git merge <evol> --no-ff
+ou mieux si <evol> n'est qu'en local
+git rebase develop <evol>
+git checkout develop
+git merge <evol>
 >delete la branche
 git branch -d <nom>
 
