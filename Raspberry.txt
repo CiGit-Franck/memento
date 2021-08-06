@@ -59,9 +59,11 @@ sudo netstat -pna | grep 1890
 sudo ss -tulpn
 sudo kill -9 <pid>
 -- create container
-docker run -it -p 1880:1880 -v /home/pi/.node-red:/data-ope --name nodered-ope nodered/node-red
-docker run -it -p 1890:1880 -v node_red_data:/data-dev --name nodered-dev nodered/node-red
-/var/lib/docker/volumes/node_red_data/_data
+docker volume create --name node-oper
+docker run -it -p 1880:1880 -v node-oper:/data --name nodered-ope nodered/node-red
+docker volume create --name node-dev
+docker run -it -p 1890:1880 -v  node-dev:/data --name nodered-dev nodered/node-red
+sudo chown -R 1000:1000 /var/lib/docker/volumes/node-dev
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
