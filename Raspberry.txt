@@ -56,9 +56,11 @@ docker pull eclipse-mosquitto
 docker pull nodered/node-red
 -- check not used port
 sudo netstat -pna | grep 1890
+sudo ss -tulpn
+sudo kill -9 <pid>
 -- create container
-docker run -it -p 1880:1880 -v node_red_data:/data --name nodered-pi3 nodered/node-red
-docker run -it -p 1890:1880 -v node_red_data:/data --name nodered-dev nodered/node-red
+docker run -it -p 1880:1880 -v node_red_data:/data/oper --name nodered-ope nodered/node-red
+docker run -it -p 1890:1880 -v node_red_data:/data/deve --name nodered-dev nodered/node-red
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
