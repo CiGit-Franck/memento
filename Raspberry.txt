@@ -1,3 +1,7 @@
+-- prise en charge du boot depuis l'USB à partir dses version hardware @1.2
+-- ajoute cette ligne dans le fichier config.txt (root)
+program_usb_boot_mode=1
+
 sudo raspi-config
 hostname > pi3
 ssh pi@pi3
@@ -28,8 +32,11 @@ sudo nano /etc/apt/sources.list
 	deb https://download.docker.com/linux/raspbian/ stretch stable
 sudo apt-get update
 sudo apt-get upgrade
+sudo systemctl stop docker.service
 sudo systemctl start docker.service
 	sudo systemctl enable docker.service
+systemctl status docker
+systemctl start docker
 
 -- install Portainer on rpi3b
 sudo docker pull portainer/portainer-ce:linux-arm
@@ -48,9 +55,10 @@ docker pull eclipse-mosquitto
 -- install image Node-Red
 docker pull nodered/node-red
 -- check not used port
-sudo netstat -pna | grep 1880
+sudo netstat -pna | grep 1890
 -- create container
-docker run -it -p 1890:1890 -v node_red_data:/data --name nodered-trash nodered/node-red
+docker run -it -p 1880:1880 -v node_red_data:/data --name nodered-pi3 nodered/node-red
+docker run -it -p 1890:1880 -v node_red_data:/data --name nodered-dev nodered/node-red
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
