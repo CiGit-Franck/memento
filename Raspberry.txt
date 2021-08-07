@@ -63,7 +63,10 @@ docker volume create --name node-oper
 docker run -it -p 1880:1880 -v node-oper:/data --name nodered-ope nodered/node-red
 docker volume create --name node-dev
 docker run -it -p 1890:1880 -v  node-dev:/data --name nodered-dev nodered/node-red
-sudo chown -R 1000:1000 /var/lib/docker/volumes/node-dev
+sudo chmod -R 777 /var/lib/docker/volumes/node-dev
+sudo chmod -R 777 /var/lib/docker/volumes/node-dev
+sudo chown -R 1000:1000 /home/pi/IoT
+sudo find / -name "capture.jpg"
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
