@@ -16,51 +16,29 @@ sudo shutdown -r now (or sudo reboot)
 sudo shutdown -h now (or sudo halt)
 
 -- upgrade
-sudo apt update
-sudo apt full-upgrade
+sudo apt update && sudo apt upgrade
 sudo apt-get clean 
 sudo apt autoremove
+
+-- check not used port
+sudo netstat -pna | grep 1890
+sudo ss -tulpn
+sudo kill -9 <pid>
+
+-- commands util
+sudo chown -R pi /home/pi/IoT
+sudo find / -name ".cache"
 
 -- Install Git
 
 -- install nodejs
-sudo apt-get remove nodejs 
+sudo apt-get remove -y nodejs 
 sudo rm -rf /usr/lib/node_modules
 sudo apt-get install curl software-properties-common 
 curl -sL https://deb.nodesource.com/setup_16.x | sudo bash - 
 sudo apt-get install -y nodejs 
 node -v
 npm -v
-
--- install Mosquitto
-//docker pull eclipse-mosquittosudo docker pull portainer/portainer-ce:latest
-cd ~
-mkdir mosquitto
-cd mosquitto
-sudo wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-sudo apt-key add mosquitto-repo.gpg.key
-cd /etc/apt/sources.list.d/
-sudo wget https://repo.mosquitto.org/debian/mosquitto-buster.list
-sudo wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_armhf.deb
-sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_armhf.deb
-cd ~
-cd mosquitto
-sudo apt-get install -y mosquitto
-sudo apt-get install -y mosquitto mosquitto-clients
-cd ~
--- command
-sudo /etc/init.d/mosquitto start
-sudo /etc/init.d/mosquitto stop
--- service
-systemctl status mosquitto
-sudo /etc/init.d/mosquitto stop
-sudo systemctl disable mosquitto.service
-sudo systemctl enable mosquitto.service
--- authentification MQTT
-sudo rm /etc/mosquitto/passwd
-sudo mosquitto_passwd -c /etc/mosquitto/passwd <login>
-> <password>
-systemctl restart mosquitto
 
 -- install Docker on rpi3b
 sudo systemctl stop docker.service
@@ -69,48 +47,65 @@ sudo apt-get purge docker-ce-cli
 sudo rm -rf /var/lib/docker
 sudo apt update && sudo apt upgrade -VV
 sudo reboot
--- ici
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -a -G docker pi
+systemctl status docker
 
 sudo systemctl stop docker.service
 sudo systemctl start docker.service
 	sudo systemctl enable docker.service
-systemctl status docker
 systemctl start docker
 
 -- install Portainer on rpi3b
-sudo docker pull portainer/portainer-ce:latest
-sudo docker volume create portainer_data
-sudo docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-sudo docker ps
+docker pull portainer/portainer-ce:latest
+docker volume create portainer_data
+-- check not used port
+docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+docker ps
 http://192.168.0.30:9000
 pi3docker/DockerInside
 -- upgrade Portainer
-sudo docker ps
-sudo docker stop <211>
-sudo docker rm <211>
-sudo docker image ls
-sudo docker image rm <2869> --force
-sudo docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+docker ps
+docker stop <211>
+docker rm <211>
+docker image ls
+docker image rm <2869> --force
+docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 
-docker network create iot
-50e4163a5a0c7464966413299d553dd51ada8cacddab21a29875df4ff357c2f3
+-- install Mosquitto
+docker pull eclipse-mosquitto
+docker volume create --name mosquitto.conf
+-- check not used port
+docker run -it -p 1883:1883 -v mosquitto.conf:/mosquitto/config/mosquitto.conf -v mosquitto.conf:/mosquitto/data -v mosquitto.conf:/mosquitto/log --name mosquitto.conf eclipse-mosquitto
+
+sudo apt-get --purge remove mosquitto
+cd ~
+mkdir mosquitto
+cd mosquitto
+sudo apt-get install -y mosquitto
+-- authentification MQTT
+sudo rm /etc/mosquitto/passwd
+sudo mosquitto_passwd -c /etc/mosquitto/passwd <login>
+> <password>
+systemctl restart mosquitto
+-- commands
+sudo /etc/init.d/mosquitto start
+sudo /etc/init.d/mosquitto stop
+-- service
+systemctl status mosquitto
+sudo /etc/init.d/mosquitto stop
+sudo systemctl disable mosquitto.service
+sudo systemctl enable mosquitto.service
 
 -- install image Node-Red
 docker pull nodered/node-red
--- check not used port
-sudo netstat -pna | grep 1890
-sudo ss -tulpn
-sudo kill -9 <pid>
 -- create container
 docker volume create --name node-oper
-docker run -it -p 1880:1880 -v node-oper:/data --name nodered-ope nodered/node-red
 docker volume create --name node-dev
+-- check not used port
+docker run -it -p 1880:1880 -v node-oper:/data --name nodered-ope nodered/node-red
 docker run -it -p 1890:1880 -v  node-dev:/data --name nodered-dev nodered/node-red
-sudo chown -R pi /home/pi/IoT
-sudo find / -name ".cache"
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
