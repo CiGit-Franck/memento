@@ -100,12 +100,14 @@ sudo systemctl enable mosquitto.service
 
 -- install image Node-Red
 docker pull nodered/node-red
--- create container
-docker volume create --name node-oper
-docker volume create --name node-dev
+-- create container extern docker
+mkdir /home/pi/dev-iot
+sudo chown -R 1000:1000 /home/pi/dev-iot
+mkdir /home/pi/ope-iot
+sudo chown -R 1000:1000 /home/pi/ope-iot
 -- check not used port
-docker run -it -p 1880:1880 -v node-oper:/data --name nodered-ope nodered/node-red
-docker run -it -p 1890:1880 -v  node-dev:/data --name nodered-dev nodered/node-red
+docker run -it -p 1890:1880 -v  /home/pi/dev-iot:/home/pi/dev-iot --name nodered-dev nodered/node-red
+docker run -it -p 1880:1880 -v /home/pi/ope-iot:/home/pi/ope-iot --name nodered-ope nodered/node-red
 
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
@@ -118,5 +120,4 @@ docker run --name="motioneye" \
     --restart="always" \
     --detach=true \
     ccrisan/motioneye:master-armhf
-
 > http://192.168.0.30:8765/
