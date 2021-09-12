@@ -111,8 +111,9 @@ docker run -it -p 1880:1880 -v /home/pi/ope-iot:/home/pi/ope-iot --name nodered-
 
 -- install Apache web server
 sudo apt install apache2 -y
-cd /var/www/html
 sudo chown -R pi:pi /var/www/html
+-- add link with /home/pi/dev-iot for cam-demo
+ln -s ~/dev-iot/cam-demo /var/www/html/cam-demo
 
 --install PHP
 sudo apt install php libapache2-mod-php -y
