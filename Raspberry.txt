@@ -109,6 +109,14 @@ sudo chown -R 1000:1000 /home/pi/ope-iot
 docker run -it -p 1890:1880 -v  /home/pi/dev-iot:/home/pi/dev-iot --name nodered-dev nodered/node-red
 docker run -it -p 1880:1880 -v /home/pi/ope-iot:/home/pi/ope-iot --name nodered-ope nodered/node-red
 
+-- install Apache web server
+sudo apt install apache2 -y
+cd /var/www/html
+sudo chown -R pi:pi /var/www/html
+
+--install PHP
+sudo apt install php libapache2-mod-php -y
+
 -- install image motionEye
 docker pull ccrisan/motioneye:master-armhf
 docker run --name="motioneye" \
