@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- prise en charge du boot depuis l'USB à partir dses version hardware @1.2
 -- ajoute cette ligne dans le fichier /boot/config.txt (root)
 program_usb_boot_mode=1
@@ -120,3 +121,137 @@ docker run --name="motioneye" \
     ccrisan/motioneye:master-armhf
 
 > http://192.168.0.30:8765/
+=======
+-- prise en charge du boot depuis l'USB à partir dses version hardware @1.2
+-- ajoute cette ligne dans le fichier /boot/config.txt (root)
+program_usb_boot_mode=1
+
+sudo raspi-config
+hostname > pi3
+ssh pi@pi3
+ssh pi@192.168.0.30
+
+-- info version
+cat /etc/os-release
+
+-- reboot
+sudo shutdown -r now (or sudo reboot)
+-- shutdown
+sudo shutdown -h now (or sudo halt)
+
+-- upgrade
+sudo apt update && sudo apt upgrade
+sudo apt-get clean 
+sudo apt autoremove
+
+-- check not used port
+sudo netstat -pna | grep 1890
+sudo ss -tulpn
+sudo kill -9 <pid>
+
+-- commands util
+sudo chown -R pi /home/pi/IoT
+sudo find / -name ".cache"
+
+-- Install Git
+
+-- install nodejs
+sudo apt-get remove -y nodejs 
+sudo rm -rf /usr/lib/node_modules
+sudo apt-get install curl software-properties-common 
+curl -sL https://deb.nodesource.com/setup_16.x | sudo bash - 
+sudo apt-get install -y nodejs 
+node -v
+npm -v
+
+-- install Docker on rpi3b
+sudo systemctl stop docker.service
+sudo apt-get purge docker-ce
+sudo apt-get purge docker-ce-cli
+sudo rm -rf /var/lib/docker
+sudo apt update && sudo apt upgrade -VV
+sudo reboot
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -a -G docker pi
+systemctl status docker
+
+sudo systemctl stop docker.service
+sudo systemctl start docker.service
+	sudo systemctl enable docker.service
+systemctl start docker
+
+-- install Portainer on rpi3b
+docker pull portainer/portainer-ce:latest
+docker volume create portainer_data
+-- check not used port
+docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+docker ps
+http://192.168.0.30:9000
+pi3docker/DockerInside
+-- upgrade Portainer
+docker ps
+docker stop <211>
+docker rm <211>
+docker image ls
+docker image rm <2869> --force
+docker run --restart always -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+-- install Mosquitto
+docker pull eclipse-mosquitto
+docker volume create --name mosquitto.conf
+-- check not used port
+docker run -it -p 1883:1883 -v mosquitto.conf:/mosquitto/config/mosquitto.conf -v mosquitto.conf:/mosquitto/data -v mosquitto.conf:/mosquitto/log --name mosquitto.conf eclipse-mosquitto
+
+sudo apt-get --purge remove mosquitto
+cd ~
+mkdir mosquitto
+cd mosquitto
+sudo apt-get install -y mosquitto
+-- authentification MQTT
+sudo rm /etc/mosquitto/passwd
+sudo mosquitto_passwd -c /etc/mosquitto/passwd <login>
+> <password>
+systemctl restart mosquitto
+-- commands
+sudo /etc/init.d/mosquitto start
+sudo /etc/init.d/mosquitto stop
+-- service
+systemctl status mosquitto
+sudo /etc/init.d/mosquitto stop
+sudo systemctl disable mosquitto.service
+sudo systemctl enable mosquitto.service
+
+-- install image Node-Red
+docker pull nodered/node-red
+-- create container extern docker
+mkdir /home/pi/dev-iot
+sudo chown -R 1000:1000 /home/pi/dev-iot
+mkdir /home/pi/ope-iot
+sudo chown -R 1000:1000 /home/pi/ope-iot
+-- check not used port
+docker run -it -p 1890:1880 -v  /home/pi/dev-iot:/home/pi/dev-iot --name nodered-dev nodered/node-red
+docker run -it -p 1880:1880 -v /home/pi/ope-iot:/home/pi/ope-iot --name nodered-ope nodered/node-red
+
+-- install Apache web server
+sudo apt install apache2 -y
+sudo chown -R pi:pi /var/www/html
+-- add link with /home/pi/dev-iot for cam-demo
+ln -s ~/dev-iot/cam-demo /var/www/html/cam-demo
+
+--install PHP
+sudo apt install php libapache2-mod-php -y
+
+-- install image motionEye
+docker pull ccrisan/motioneye:master-armhf
+docker run --name="motioneye" \
+    -p 8765:8765 \
+    --hostname="motioneye" \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /etc/motioneye:/etc/motioneye \
+    -v /var/lib/motioneye:/var/lib/motioneye \
+    --restart="always" \
+    --detach=true \
+    ccrisan/motioneye:master-armhf
+> http://192.168.0.30:8765/
+>>>>>>> a2fb8a34fb85df3c945c1039c4a81e62f598e0b7
