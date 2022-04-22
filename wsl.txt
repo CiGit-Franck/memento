@@ -30,3 +30,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo curl -L https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 source ~/.bashrc
 
+sudo gpasswd -a $USER docker
+newgrp docker
+sudo su $USER
+systemctl status docker.service
+systemctl start docker
+systemctl enable docker
+sudo service docker start
