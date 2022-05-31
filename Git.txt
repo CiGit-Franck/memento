@@ -20,6 +20,9 @@ https://blog.nathanaelcherrier.com/fr/gitflow-la-methodologie-et-la-pratique/
 git config --global user.email "franck.thery@gmail.com"
 git config --global user.name "CiGit-Franck"
 
+# LF will be replaced by CRLF in pom.xml
+git config core.autocrlf
+
 # màj repository
 git reset origin/master --hard
 git pull --rebase
