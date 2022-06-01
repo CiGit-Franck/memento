@@ -1,8 +1,9 @@
 wsl --install
 wsl --install -d Ubuntu
+sudo do-release-upgrade -d
 sudo apt update
 sudo apt upgrade
-sudo apt-get clean 
+sudo apt clean 
 sudo apt autoremove
 
 - version
