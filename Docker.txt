@@ -48,6 +48,8 @@ docker network inspect NET
 docker network rm NET
 docker network prune
 
+# use docker-compose
+https://docs.docker.com/compose/gettingstarted/
 
 ./projet
   Dockerfile			-- instructions de création de l'image Docker
