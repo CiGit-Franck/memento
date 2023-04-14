@@ -1,0 +1,36 @@
+Install VirtualBox : https://www.virtualbox.org/
+Install the Virtual Machine : https://www.alpinelinux.org/downloads/
+  - Download the Virtual x86_64 iso
+  - New virtual
+  - RAM : xxxx MB
+  - CPU : 2
+  - Virtual Hard Disk xx Go
+  - Start
+  - Install Linux
+    ~ localhost login: root{enter}
+    ~ localhost:~# setup-alpine{enter}
+    ~ ...
+  - IP VM : ip a
+  - Exit : poweroff
+  - VM Network Access : SSH port (22)
+    ~ localhost:2522 to our <IP VM>:22
+  - Add linux tools : edit file /etc/apk/repositories to enable the community repository
+    ~ /etc/apk/repositories
+      #/media/cdrom/apks
+      http://dl-cdn.alpinelinux.org/alpine/v3.17/main
+      http://dl-cdn.alpinelinux.org/alpine/v3.17/community
+  - Install tools :
+    ~ apk add w3m virtualbox-guest-additions mandoc man-pages
+    ~ apk add docker docker-cli-compose
+  - Open Docker API to connect your IDE 
+    Add a file /etc/docker/daemon.json with the following content :
+      /etc/docker/daemon.json
+      {
+         "tls": false,
+         "hosts":[
+            "unix:///var/run/docker.sock",
+            "tcp://10.0.2.15:2375"
+         ]
+      }
+      service docker restart
+      add redirection from 127.0.0.1 : 2375 to 10.0.2.15 : 2375
